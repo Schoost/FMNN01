@@ -2,13 +2,13 @@ import scipy.linalg as sl
 import numpy as np
 
 
-def qrIter(A,maxIter=10000,TOL=10e-14):
+def qrIter(A,maxIter=10000,TOL=10e-6):
 	A = sl.hessenberg(A)
 	
 	d = np.diag(A)
 	for k in range(1,maxIter):
 		mu = A[-1][-1]
-		Q,R = sl.qr(A-mu*np.identity(len(A[:]))
+		Q,R = sl.qr(A-mu*np.identity(len(A[:])))
 		A=R@Q + mu*np.identity(len(A[:]))	
 		if (sl.norm(np.sort(d)-np.sort(np.diag(A)))<TOL):
 			break	

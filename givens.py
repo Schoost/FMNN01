@@ -24,9 +24,6 @@ def rotation(A,i,j):
     G=np.zeros(np.shape(A[0:2,:]))
     G[0,[j,i]]=[c,-s]
     G[1,[j,i]]=[s, c]
-    print('1:',c**2+s**2)
-    print('G:',G)
-    print('G@A:',G@A)
     A[[j,i],:]=G@A
     A[i,j]=0.0
     return A

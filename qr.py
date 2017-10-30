@@ -1,6 +1,6 @@
 import scipy.linalg as sl
 import numpy as np
-
+from numba import jit
 
 def qrIter(A,maxIter=10000,TOL=10e-6):
 	A = sl.hessenberg(A)
@@ -25,10 +25,15 @@ def qrIter(A,maxIter=10000,TOL=10e-6):
 			k+=k1+k2
 
 	return A,k
-n=100
 
-A=np.random.rand(n+1,n+1)
-A=A.T+A
-
-A,k=qrIter(A)
-print(A,k)
+def main():
+    n=100
+    
+    A=np.random.rand(n+1,n+1)
+    A=A.T+A
+    
+    A,k=qrIter(A)
+    print(A,k)
+    
+if __name__ == '__main__':
+    main()
